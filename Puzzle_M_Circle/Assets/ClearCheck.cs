@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ClearCheck : MonoBehaviour
 {
@@ -8,6 +7,9 @@ public class ClearCheck : MonoBehaviour
     [SerializeField] private Transform[] play;
     [SerializeField] string answerStr;       //答えオブジェクトの名前を並べたもの
     [SerializeField] string playerStr;       //プレイヤーオブジェクトの名前を並べたもの
+
+    [SerializeField] private Text stageNum;
+    private int sNum = 1;
 
     private void Start()
     {
@@ -64,5 +66,9 @@ public class ClearCheck : MonoBehaviour
             if (o.childCount > 0)
                 answerStr = answerStr + o.GetChild(0).gameObject.name;
         }
+
+        //ステージ数を進める
+        sNum++;
+        stageNum.text = sNum.ToString("00");
     }
 }
